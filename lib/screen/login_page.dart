@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:sibeluapp/models/login_body_model.dart';
+import '../repository/auth_repository.dart';
 
 import '../constants.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  AuthRepository apiService = AuthRepository();
+  TextEditingController _controllerUsername = TextEditingController();
+  TextEditingController _controllerPassword = TextEditingController();
+  String result;
+
   Widget _buildUsernameTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,6 +29,7 @@ class LoginPage extends StatelessWidget {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: _controllerUsername,
             keyboardType: TextInputType.name,
             style: TextStyle(
               color: Colors.white,
@@ -52,6 +65,7 @@ class LoginPage extends StatelessWidget {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            controller: _controllerPassword,
             obscureText: true,
             style: TextStyle(
               color: Colors.white,
@@ -79,7 +93,17 @@ class LoginPage extends StatelessWidget {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () {
+          print('Login Button Pressed');
+          apiService
+              .getToken(LoginBody(_controllerUsername.text,
+                  _controllerPassword.text, 'password'))
+              .then((token) {
+            setState(() {
+              result = token.toString();
+            });
+          });
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -146,6 +170,19 @@ class LoginPage extends StatelessWidget {
                   ),
                   _buildPasswordTF(),
                   _buildLoginBtn(),
+                  result == null
+                      ? Center(
+                          child: Text(
+                            'Result in here',
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      : Center(
+                          child: Text(
+                            result,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                 ],
               ),
             ),
