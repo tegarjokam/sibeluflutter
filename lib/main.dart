@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sibeluapp/screen/landing_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,27 +10,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'sibelu',
+      title: 'Sibelu',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.pink,
+        accentColor: Colors.amber[50],
+        canvasColor: Colors.blue,
+        fontFamily: 'OpenSans',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              bodyText1: TextStyle(color: Colors.white),
+              bodyText2: TextStyle(
+                  // color: Color.fromARGB(20, 51, 51, 1),
+                  ),
+              headline1: TextStyle(
+                  fontSize: 24,
+                  fontFamily: 'Quicksand',
+                  fontWeight: FontWeight.bold),
+            ),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LandingPage(),
+      routes: {
+        '/landing-page': (ctx) => LandingPage(),
+      },
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
