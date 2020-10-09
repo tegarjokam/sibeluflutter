@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'token_model.g.dart';
+part 'token.g.dart';
 
 @JsonSerializable()
 class Token {
@@ -16,19 +16,16 @@ class Token {
   @JsonKey(ignore: true)
   String error;
 
-  Token(
-      {this.accessToken,
-      this.tokenType,
-      this.refreshToken,
-      this.expiresIn,
-      this.scope});
+  Token(this.accessToken, this.tokenType, this.refreshToken, this.expiresIn, this.scope);
+
+  factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
+
+  Token.withError(this.error);
+
+  Map<String, dynamic> toJson() => _$TokenToJson(this);
 
   @override
   String toString() {
-    return 'Token{accessToken: $accessToken, tokenType: $tokenType, refreshToken: $refreshToken, expiresIn: $expiresIn, scope: $scope, error: $error}';
+    return 'Token{accessToken: $accessToken, tokenType: $tokenType, refreshToken: $refreshToken, expiresIn: $expiresIn, scope: $scope}';
   }
-
-  factory Token.from(Map<String, dynamic> json) => _$TokenFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TokenToJson(this);
 }

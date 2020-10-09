@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'login_body_model.g.dart';
+part 'login_body.g.dart';
 
 @JsonSerializable()
 class LoginBody {
@@ -11,8 +11,7 @@ class LoginBody {
 
   LoginBody(this.username, this.password, this.grantType);
 
-  factory LoginBody.fromJson(Map<String, dynamic> json) =>
-      _$LoginBodyFromJson(json);
+  factory LoginBody.fromJson(Map<String, dynamic> json) => _$LoginBodyFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginBodyToJson(this);
 

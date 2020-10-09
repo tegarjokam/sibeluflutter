@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sibeluapp/screen/landing_login_page.dart';
 import 'package:sibeluapp/screen/landing_page.dart';
+import 'package:sibeluapp/screen/login_page.dart';
 
-void main() {
+import 'injector/injector.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
   runApp(MyApp());
 }
 
@@ -30,6 +37,8 @@ class MyApp extends StatelessWidget {
       home: LandingPage(),
       routes: {
         '/landing-page': (ctx) => LandingPage(),
+        '/landing-login-page': (ctx) => LandingLoginPage(),
+        '/login': (ctx) => LoginPage(),
       },
     );
   }

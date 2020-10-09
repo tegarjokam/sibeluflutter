@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'token_model.dart';
+part of 'token.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -8,11 +8,11 @@ part of 'token_model.dart';
 
 Token _$TokenFromJson(Map<String, dynamic> json) {
   return Token(
-    accessToken: json['access_token'] as String,
-    tokenType: json['token_type'] as String,
-    refreshToken: json['refresh_token'] as String,
-    expiresIn: json['expires_in'] as int,
-    scope: json['scope'] as String,
+    json['access_token'] as String,
+    json['token_type'] as String,
+    json['refresh_token'] as String,
+    json['expires_in'] as int,
+    json['scope'] as String,
   );
 }
 
