@@ -52,8 +52,6 @@ class ApiAuthProvider {
           },
         ),
       );
-      print(response.statusCode);
-      print('======== ERRROORRR ====>>>>>>');
       return Token.fromJson(response.data);
     } catch (error, stacktrace) {
       print('ERRROORRR ====>>>>>>');

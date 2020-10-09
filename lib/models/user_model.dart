@@ -9,6 +9,8 @@ class User {
   String role;
   String phoneNumber;
   String address;
+  String imageUrl;
+  String title;
   @JsonKey(ignore: true)
   String error;
 
@@ -17,7 +19,9 @@ class User {
       this.username,
       this.role,
       this.phoneNumber,
-      this.address});
+      this.address,
+      this.imageUrl,
+      this.title});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

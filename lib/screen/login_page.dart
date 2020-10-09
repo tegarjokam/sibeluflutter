@@ -180,7 +180,6 @@ class _LoginPageState extends State<LoginPage> {
                 },
               );
             } else if (state is LoginSuccess) {
-              print('suksess =====>>>>>>');
               Navigator.pushNamedAndRemoveUntil(
                   context, '/landing-login-page', (r) => false);
             }

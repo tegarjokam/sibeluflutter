@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sibeluapp/screen/landing_login_page.dart';
+import 'package:sibeluapp/screen/landing_dashboard_page.dart';
 import 'package:sibeluapp/screen/landing_page.dart';
 import 'package:sibeluapp/screen/login_page.dart';
 
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       home: LandingPage(),
       routes: {
         '/landing-page': (ctx) => LandingPage(),
-        '/landing-login-page': (ctx) => LandingLoginPage(),
+        '/landing-login-page': (ctx) => LandingDashboardPage(),
         '/login': (ctx) => LoginPage(),
       },
     );
