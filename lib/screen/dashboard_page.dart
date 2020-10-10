@@ -46,22 +46,22 @@ class _DashboardPageState extends State<DashboardPage> {
                     Text(
                       post["name"],
                       style: const TextStyle(
-                          fontSize: 28, fontWeight: FontWeight.bold),
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       post["brand"],
                       style: const TextStyle(fontSize: 17, color: Colors.grey),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
-                    Text(
-                      "\$ ${post["price"]}",
-                      style: const TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    )
+                    // Text(
+                    //   "\$ ${post["price"]}",
+                    //   style: const TextStyle(
+                    //       fontSize: 25,
+                    //       color: Colors.black,
+                    //       fontWeight: FontWeight.bold),
+                    // )
                   ],
                 ),
                 Image.asset(
@@ -84,7 +84,6 @@ class _DashboardPageState extends State<DashboardPage> {
     profileOnDashboard.user = user;
     print('init');
     controller.addListener(() {
-      // print('${controller.offset} ');
       double value = controller.offset / 119;
 
       setState(() {
@@ -100,10 +99,10 @@ class _DashboardPageState extends State<DashboardPage> {
     final double categoryHeight = size.height * 0.30;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.blue,
           leading: Icon(
             Icons.menu,
             color: Colors.black,
@@ -128,13 +127,42 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: profileOnDashboard,
               ),
               Expanded(
-                flex: 3,
+                flex: 1,
                 child: Container(
                   decoration: BoxDecoration(
+                    color: Colors.white70,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0)),
-                    color: Colors.green,
+                        topLeft: Radius.circular(15.0),
+                        topRight: Radius.circular(15.0)),
+                  ),
+                  child: Column(children: [
+                    Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        child: Text(
+                          'Apps & News',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        )),
+                    Container(
+                      width: size.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AppsItem(),
+                          AppsItem(),
+                          AppsItem(),
+                        ],
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white70,
                   ),
                   child: ListView.builder(
                     controller: controller,
@@ -148,13 +176,13 @@ class _DashboardPageState extends State<DashboardPage> {
                         scale = index + 0.5 - topContainer;
                         // print('scale = $scale');
                         if (scale < 0) {
-                          print('SCALE < 0');
-                          print('index $index, scale : $scale');
+                          // print('SCALE < 0');
+                          // print('index $index, scale : $scale');
                           scale = 0;
                         } else if (scale > 1) {
-                          print('SCALE > 1');
+                          // print('SCALE > 1');
                           // print("")
-                          print('index $index, scale : $scale');
+                          // print('index $index, scale : $scale');
                           scale = 1;
                         }
                       }
@@ -181,54 +209,122 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 }
 
+class AppsItem extends StatelessWidget {
+  const AppsItem({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+            color: Colors.white54),
+        height: 100,
+        width: 100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: Image.asset(
+                'assets/img/logo_bc.png',
+                height: 50,
+                width: 50,
+              ),
+            ),
+            Text(
+              'SIRATU',
+              style: TextStyle(fontSize: 13),
+            ),
+            Text(
+              'Rumah Tangga',
+              style: TextStyle(fontSize: 13),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 const FOOD_DATA = [
-  {"name": "Burger", "brand": "Hawkers", "price": 2.99, "image": "burger.png"},
   {
-    "name": "Cheese Dip",
-    "brand": "Hawkers",
-    "price": 4.99,
+    "name": "Sosialisasi Pita Cukai",
+    "brand": "Mino",
+    "price": '',
+    "image": "burger.png"
+  },
+  {
+    "name": "Join Sinergi Dengan DJP",
+    "brand": "Andi Chusna",
+    "price": '',
     "image": "cheese_dip.png"
   },
-  {"name": "Cola", "brand": "Mcdonald", "price": 1.49, "image": "cola.png"},
-  {"name": "Fries", "brand": "Mcdonald", "price": 2.99, "image": "fries.png"},
   {
-    "name": "Ice Cream",
-    "brand": "Ben & Jerry's",
-    "price": 9.49,
+    "name": "Pemeriksaan Sarana Pengangkut",
+    "brand": "Ferdi",
+    "price": '',
+    "image": "cola.png"
+  },
+  {
+    "name": "HUT Bea Cukai Ke-74",
+    "brand": "Daniel",
+    "price": '',
+    "image": "fries.png"
+  },
+  {
+    "name": "Apel Luar Biasa",
+    "brand": "Palito",
+    "price": '',
     "image": "ice_cream.png"
   },
   {
-    "name": "Noodles",
-    "brand": "Hawkers",
-    "price": 4.49,
+    "name": "Banjir Ambon",
+    "brand": "Akip",
+    "price": '',
     "image": "noodles.png"
   },
-  {"name": "Pizza", "brand": "Dominos", "price": 17.99, "image": "pizza.png"},
   {
-    "name": "Sandwich",
-    "brand": "Hawkers",
-    "price": 2.99,
+    "name": "Sosialisasi Cukai Plastik",
+    "brand": "Aji",
+    "price": '',
+    "image": "pizza.png"
+  },
+  {
+    "name": "Ramah Tamah",
+    "brand": "Leni Nurlaeni",
+    "price": '',
     "image": "sandwich.png"
   },
   {"name": "Wrap", "brand": "Subway", "price": 6.99, "image": "wrap.png"},
   {
-    "name": "Ice Cream",
-    "brand": "Ben & Jerry's",
-    "price": 9.49,
+    "name": "Join Sinergi Dengan DJP",
+    "brand": "Yusuf",
+    "price": '',
     "image": "ice_cream.png"
   },
   {
-    "name": "Noodles",
-    "brand": "Hawkers",
-    "price": 4.49,
+    "name": "Bintal Islam",
+    "brand": "Bagus",
+    "price": '',
     "image": "noodles.png"
   },
   {"name": "Pizza", "brand": "Dominos", "price": 17.99, "image": "pizza.png"},
   {
-    "name": "Sandwich",
-    "brand": "Hawkers",
-    "price": 2.99,
+    "name": "Buka Puasa Bersama",
+    "brand": "Rizal",
+    "price": '',
     "image": "sandwich.png"
   },
-  {"name": "Wrap", "brand": "Subway", "price": 6.99, "image": "wrap.png"}
+  {
+    "name": "Penguatan Integritas",
+    "brand": "Zubaidy Yulianto",
+    "price": '',
+    "image": "wrap.png"
+  }
 ];
