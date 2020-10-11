@@ -10,13 +10,12 @@ class ProfileOnDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double categoryHeight = MediaQuery.of(context).size.height * 0.30;
+    // final double categoryHeight = MediaQuery.of(context).size.height * 0.30;
     return Container(
       color: Colors.blue,
       width: MediaQuery.of(context).size.width,
-      height: categoryHeight,
+      // height: categoryHeight,
       child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),

@@ -61,6 +61,10 @@ flutter:
   assets:
     - assets/img/bg_landing.jpg
     - assets/img/logo_bc.png
+    - assets/img/Magical_World.png
+    - assets/img/Red_Mountains.png
+    - assets/img/Bakti_Sosial.jpg
+    - assets/img/Upacara_Pelantikan.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

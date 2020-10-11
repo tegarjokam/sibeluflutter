@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sibeluapp/bloc/dashboard/dashboard_user_bloc.dart';
 import 'package:sibeluapp/models/user_model.dart';
-import 'package:sibeluapp/screen/dashboard_page.dart';
-import 'package:sibeluapp/screen/dashboard_page_2.dart';
+import 'package:sibeluapp/screen/dashboard/dashboard.dart';
 import 'package:sibeluapp/widget/profile_image.dart';
 
 class LandingDashboardPage extends StatefulWidget {
@@ -45,7 +44,7 @@ class _LandingDashboardPageState extends State<LandingDashboardPage> {
                       context,
                       MaterialPageRoute(
                         builder: (_) {
-                          return DashboardPage(
+                          return DashboardScreen(
                             user: user,
                           );
                         },
@@ -108,12 +107,6 @@ class _LandingDashboardPageState extends State<LandingDashboardPage> {
           ),
         ),
       ),
-
-      // bottomNavigationBar: GestureDetector(
-      //   onTapUp: (a) {
-      //     print(a.globalPosition);
-      //   },
-      // ),
     );
   }
 }
