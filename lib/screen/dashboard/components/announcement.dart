@@ -13,7 +13,10 @@ class Announcement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SectionTitle(title: 'Information'),
+      SectionTitle(
+        title: 'Information',
+        press: () {},
+      ),
       VerticalSpacing(of: 20),
       SingleChildScrollView(
         scrollDirection: Axis.horizontal,

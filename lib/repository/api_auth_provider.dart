@@ -12,7 +12,7 @@ import '../models/user_model.dart';
 
 class ApiAuthProvider {
   final Dio _dio = new Dio();
-  final _baseUrl = "http://192.168.1.7:8080/";
+  final _baseUrl = "http://192.168.1.6:8080/";
   final clientId = 'sibeluApp';
   final clientSecret = 'sibeluSecret';
 

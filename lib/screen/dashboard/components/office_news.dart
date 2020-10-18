@@ -14,7 +14,10 @@ class OfficeNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SectionTitle(title: "News In Office"),
+        SectionTitle(
+          title: "News In Office",
+          press: () {},
+        ),
         VerticalSpacing(),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

@@ -65,6 +65,7 @@ flutter:
     - assets/img/Red_Mountains.png
     - assets/img/Bakti_Sosial.jpg
     - assets/img/Upacara_Pelantikan.jpg
+    - assets/img/logo_aduan.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

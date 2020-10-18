@@ -117,19 +117,6 @@ class _LoginPageState extends State<LoginPage> {
                         _controllerPassword.text, 'password'),
                   ),
                 );
-                // apiAuthRepository
-                //     .postLoginUser(LoginBody(
-                //         '199803162018121003', '199803162018121003', 'password'))
-                //     .then((token) async {
-                //   print('token ===> ' + token.accessToken);
-                //   await sharedPreferencesManager.putString(
-                //       SharedPreferencesManager.keyAccessToken, token.accessToken);
-                //   apiAuthRepository.getProfile().then((value) {
-                //     setState(() {
-                //       result = value.fullName;
-                //     });
-                //   });
-                // });
               },
               padding: EdgeInsets.all(15.0),
               shape: RoundedRectangleBorder(
@@ -227,21 +214,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       _buildPasswordTF(),
                       _buildLoginBtn(),
-                      result == null
-                          ? Center(
-                              child: Text(
-                                'Result in here',
-                                textAlign: TextAlign.center,
-                              ),
-                            )
-                          : Center(
-                              child: Text(
-                                result,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
                     ],
                   ),
                 ),
