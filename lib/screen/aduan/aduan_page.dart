@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:sibeluapp/widget/widget_card_loading.dart';
 
 import 'components/custom_button.dart';
 
@@ -8,23 +10,170 @@ class AduanPage extends StatefulWidget {
 }
 
 class _AduanPageState extends State<AduanPage> {
-  DateTime selectedDate = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
+  String _eventDate;
+  String _jenisAduan;
+  String _email;
+  String _phoneNumber;
+  String _chronology;
+  DateTime dateInit = DateTime.now();
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
+  TextEditingController dateCtl = TextEditingController();
+  TextEditingController emailCtl = TextEditingController();
+  TextEditingController phoneNumberCtl = TextEditingController();
+
+  Widget _buildEventDate() {
+    String _formattedate = new DateFormat.yMMMMEEEEd().format(dateInit);
+    return TextFormField(
+      controller: dateCtl,
+      decoration: InputDecoration(labelText: 'Date Event'),
+      onTap: () async {
+        FocusScope.of(context).requestFocus(new FocusNode());
+
+        DateTime picked = await showDatePicker(
+            context: context,
+            initialDate: dateInit,
+            firstDate: DateTime(2020),
+            lastDate: DateTime(2100));
+        dateCtl.text = _formattedate.toString();
+        print('date : $dateInit');
+        print('dateCtl : ${dateCtl.text}');
+        if (picked != null && picked != dateInit) {
+          setState(() {
+            print('picked : ${picked.toLocal()}');
+            print('before - date : $dateInit');
+            dateInit = picked.toLocal();
+            _eventDate = picked.toLocal().toString();
+            dateCtl.text = picked.toLocal().toString();
+            print('after - date : $dateInit');
+          });
+        }
+      },
+      validator: (value) {
+        if (value.isEmpty) {
+          return "can't be empty";
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildJenisAduan() {
+    return DropdownButtonFormField(
+      dropdownColor: Colors.white,
+      items: [
+        DropdownMenuItem(
+          child: Text('Masalah Operasional'),
+          value: 'OPERASIONAL',
+        ),
+        DropdownMenuItem(
+          child: Text('Melanggar Tugas dan Fungsi'),
+          value: 'TUSI',
+        ),
+        DropdownMenuItem(
+          child: Text('Tindak Pidana'),
+          value: 'PIDANA',
+        ),
+        DropdownMenuItem(
+          child: Text('Fraud'),
+          value: 'FRAUD',
+        ),
+        DropdownMenuItem(
+          child: Text('Lainnya'),
+          value: 'LAINNYA',
+        )
+      ],
+      onSaved: (val) => _jenisAduan = val,
+      onChanged: (val) {
+        _jenisAduan = val;
+        print('jenis aduan : $_jenisAduan');
+      },
+      decoration: InputDecoration(labelText: 'Kind of Aduan'),
+      validator: (value) {
+        if (value == null) {
+          return "can't be empty";
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildEmail() {
+    return TextFormField(
+      controller: emailCtl,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        labelText: 'Email',
+      ),
+      onSaved: (val) {
+        _email = val;
+        print('email : $_email');
+      },
+      onChanged: (val) {
+        _email = val;
+        print('email : $_email');
+      },
+      validator: (value) {
+        if (value.isEmpty) {
+          return "can't be empty";
+        } else if (!RegExp(
+                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            .hasMatch(value)) {
+          return "please fill the correct email";
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildPhoneNumber() {
+    return TextFormField(
+      controller: phoneNumberCtl,
+      keyboardType: TextInputType.phone,
+      decoration: InputDecoration(
+        labelText: 'Phone number',
+      ),
+      onSaved: (val) => _phoneNumber = val,
+      onChanged: (val) {
+        _phoneNumber = val;
+        print('phone number : $_phoneNumber');
+      },
+      validator: (value) {
+        if (value.isEmpty) {
+          return "can't be empty";
+        } else if (value.length < 9) {
+          return "invalid phone number";
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildChronology() {
+    return TextFormField(
+      maxLines: 10,
+      decoration: InputDecoration(
+        labelText: 'Chronology',
+      ),
+      onSaved: (val) => _chronology = val,
+      onChanged: (val) {
+        _chronology = val;
+        print('chronology : $_chronology');
+        print('length : ${_chronology.toString().length}');
+      },
+      validator: (value) {
+        if (value.isEmpty) {
+          return "can't be empty";
+        }
+        return null;
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: buildAppBar(),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -39,6 +188,7 @@ class _AduanPageState extends State<AduanPage> {
           ),
         ),
         child: Form(
+          key: _formKey,
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -55,67 +205,29 @@ class _AduanPageState extends State<AduanPage> {
                 ),
                 Text('Designed and developed by BCKanwilMaluku'),
                 SizedBox(height: 30),
-                InkWell(
-                  onTap: () {
-                    showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2020, 1),
-                      lastDate: DateTime(2100),
-                    ); // Call Function that has showDatePicker()
-                  },
-                  child: IgnorePointer(
-                    child: TextFormField(
-                      decoration: InputDecoration(hintText: 'Tanggal'),
-                      onChanged: (value) {
-                        // print(value);
-                        selectedDate = DateTime.parse(value);
-                        print('date dari onChanged = $selectedDate');
-                      },
-                      onSaved: (val) {
-                        print(val);
-                        selectedDate = DateTime.parse(val);
-                        print('date dari onSaved = $selectedDate');
-                      },
-                      onEditingComplete: () {
-                        // date = DateTime.parse();
-                        print('date dari onChanged = $selectedDate');
-                      },
-                    ),
-                  ),
-                ),
-                DropdownButtonFormField(
-                  dropdownColor: Colors.white,
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('Korupsi'),
-                      value: 'Korupsi',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Gratifikasi'),
-                      value: 'Gratifikasi',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Disiplin'),
-                      value: 'Disiplin',
-                    )
-                  ],
-                  onChanged: (value) {},
-                  decoration: InputDecoration(labelText: 'Jenis Aduan'),
-                ),
-                TextFormField(
-                  maxLines: 10,
-                  decoration: InputDecoration(
-                    labelText: 'Kronologi',
-                  ),
-                ),
+                _buildEmail(),
+                _buildPhoneNumber(),
+                _buildEventDate(),
+                _buildJenisAduan(),
+                _buildChronology(),
                 SizedBox(
                   height: 30,
                 ),
                 CustomButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/aduan-page');
+                    // Validate returns true if the form is valid, otherwise false.
+                    if (_formKey.currentState.validate()) {
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      // Scaffold.of(context).showSnackBar(
+                      //     SnackBar(content: Text('Processing Data')));
+                      return WidgetCardLoading();
+                    }
+                    // Navigator.pushNamed(context, '/aduan-page');
                   },
+                ),
+                SizedBox(
+                  height: 30,
                 ),
               ],
             ),
