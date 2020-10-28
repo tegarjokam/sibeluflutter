@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+final baseUrl = "http://192.168.1.6:8080/";
+final clientId = 'sibeluApp';
+final clientSecret = 'sibeluSecret';
+
 final kHintTextStyle = TextStyle(
   color: Colors.white54,
   fontFamily: 'OpenSans',

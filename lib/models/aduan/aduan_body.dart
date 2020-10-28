@@ -6,13 +6,19 @@ part 'aduan_body.g.dart';
 class AduanBody {
   String email;
   String phoneNumber;
+  String eventDate;
+  String jenisAduan;
   String kronologi;
-  String userId;
   @JsonKey(ignore: true)
   String error;
 
   AduanBody(
-      {this.email, this.phoneNumber, this.kronologi, this.userId, this.error});
+      {this.email,
+      this.phoneNumber,
+      this.eventDate,
+      this.jenisAduan,
+      this.kronologi,
+      this.error});
 
   factory AduanBody.fromJson(Map<String, dynamic> json) =>
       _$AduanBodyFromJson(json);
@@ -23,6 +29,6 @@ class AduanBody {
 
   @override
   String toString() {
-    return 'AduanBody{email: $email, phone number : $phoneNumber, kronologi : $kronologi, user id : $userId}';
+    return 'AduanBody{email: $email, phone number : $phoneNumber, event date : $eventDate, jenis aduan : $jenisAduan, chronology : $kronologi}';
   }
 }

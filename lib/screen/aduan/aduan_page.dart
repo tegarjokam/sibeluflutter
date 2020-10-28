@@ -1,5 +1,17 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:sibeluapp/bloc/aduan/aduan_bloc.dart';
+import 'package:sibeluapp/injector/injector.dart';
+import 'package:sibeluapp/models/aduan/aduan_body.dart';
+import 'package:sibeluapp/repository/api_aduan_repository.dart';
+import 'package:sibeluapp/repository/api_auth_repository.dart';
+import 'package:sibeluapp/screen/aduan/utils/toast_utils.dart';
+import 'package:sibeluapp/storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:sibeluapp/widget/widget_card_loading.dart';
 
 import 'components/custom_button.dart';
@@ -10,6 +22,8 @@ class AduanPage extends StatefulWidget {
 }
 
 class _AduanPageState extends State<AduanPage> {
+  final AduanBloc _aduanBloc = AduanBloc(AduanInitial());
+  ApiAduanRepository apiAduanRepository = ApiAduanRepository();
   final _formKey = GlobalKey<FormState>();
   String _eventDate;
   String _jenisAduan;
@@ -170,66 +184,121 @@ class _AduanPageState extends State<AduanPage> {
     );
   }
 
+  Widget _buildSuccesSend() {
+    return Center(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Container(
+          width: 40,
+          height: 40,
+          color: Colors.green[300],
+          child: Icon(
+            Icons.check_circle_outline,
+            size: 30,
+            color: Colors.green,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: buildAppBar(),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        margin: EdgeInsets.only(top: 30),
-        padding: EdgeInsets.only(top: 40, left: 30, right: 30),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Hero(
-                  tag: 'logo-aduan',
-                  child: Image.asset(
-                    'assets/img/logo_aduan.png',
-                    height: 100,
-                  ),
+      body: BlocProvider<AduanBloc>(
+        create: (context) => _aduanBloc,
+        child: BlocListener<AduanBloc, AduanState>(
+          listener: (context, state) {
+            if (state is AduanFailure) {
+              String title = 'info';
+              showDialog(
+                context: context,
+                builder: (context) {
+                  if (Platform.isIOS) {
+                    return CupertinoAlertDialog(
+                      title: Text(title),
+                      content: Text(state.error),
+                    );
+                  } else {
+                    return AlertDialog(
+                      title: Text(title),
+                      content: Text(state.error),
+                    );
+                  }
+                },
+              );
+            } else if (state is AduanSuccess) {
+              ToastSuccessAduan.showCustomToast(
+                  context, "Aduan successful send!");
+              return Navigator.pop(context);
+            }
+          },
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            margin: EdgeInsets.only(top: 30),
+            padding: EdgeInsets.only(top: 40, left: 30, right: 30),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            child: Form(
+              key: _formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Hero(
+                      tag: 'logo-aduan',
+                      child: Image.asset(
+                        'assets/img/logo_aduan.png',
+                        height: 100,
+                      ),
+                    ),
+                    Text(
+                      'Pojok Aduan.',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    Text('Designed and developed by BCKanwilMaluku'),
+                    SizedBox(height: 30),
+                    _buildEmail(),
+                    _buildPhoneNumber(),
+                    _buildEventDate(),
+                    _buildJenisAduan(),
+                    _buildChronology(),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    BlocBuilder<AduanBloc, AduanState>(
+                      builder: (context, state) {
+                        if (state is AduanLoading) {
+                          return CircularProgressIndicator();
+                        } else {
+                          return CustomButton(onPressed: () {
+                            if (_formKey.currentState.validate()) {
+                              _aduanBloc.add(AduanEvent(AduanBody(
+                                email: _email,
+                                phoneNumber: _phoneNumber,
+                                jenisAduan: _jenisAduan,
+                                eventDate: _eventDate,
+                                kronologi: _chronology,
+                              )));
+                            }
+                          });
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                  ],
                 ),
-                Text(
-                  'Pojok Aduan.',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                Text('Designed and developed by BCKanwilMaluku'),
-                SizedBox(height: 30),
-                _buildEmail(),
-                _buildPhoneNumber(),
-                _buildEventDate(),
-                _buildJenisAduan(),
-                _buildChronology(),
-                SizedBox(
-                  height: 30,
-                ),
-                CustomButton(
-                  onPressed: () {
-                    // Validate returns true if the form is valid, otherwise false.
-                    if (_formKey.currentState.validate()) {
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
-                      // Scaffold.of(context).showSnackBar(
-                      //     SnackBar(content: Text('Processing Data')));
-                      return WidgetCardLoading();
-                    }
-                    // Navigator.pushNamed(context, '/aduan-page');
-                  },
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-              ],
+              ),
             ),
           ),
         ),

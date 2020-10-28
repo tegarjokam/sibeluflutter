@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sibeluapp/screen/aduan/aduan_page.dart';
 import 'package:sibeluapp/screen/aduan/landing_aduan_page.dart';
+import 'package:sibeluapp/screen/dashboard/dashboard.dart';
 import 'package:sibeluapp/screen/landing_dashboard_page.dart';
 import 'package:sibeluapp/screen/landing_page.dart';
 import 'package:sibeluapp/screen/login_page.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/landing-page': (ctx) => LandingPage(),
         '/landing-login-page': (ctx) => LandingDashboardPage(),
         '/login': (ctx) => LoginPage(),
+        '/dashboard': (ctx) => DashboardScreen(),
         '/landing-aduan-page': (ctx) => LandingAduanPage(),
         '/aduan-page': (ctx) => AduanPage(),
       },

@@ -8,16 +8,14 @@ import 'package:sibeluapp/models/refreshtoken/refresh_token_body.dart';
 import 'package:sibeluapp/models/register/register.dart';
 import 'package:sibeluapp/models/token/token.dart';
 import 'package:sibeluapp/util/dio_logging_interceptors.dart';
+import '../constants.dart';
 import '../models/user_model.dart';
 
 class ApiAuthProvider {
   final Dio _dio = new Dio();
-  final _baseUrl = "http://192.168.1.6:8080/";
-  final clientId = 'sibeluApp';
-  final clientSecret = 'sibeluSecret';
 
   ApiAuthProvider() {
-    _dio.options.baseUrl = _baseUrl;
+    _dio.options.baseUrl = baseUrl;
     _dio.interceptors.add(DioLoggingInterceptors(_dio));
   }
 
