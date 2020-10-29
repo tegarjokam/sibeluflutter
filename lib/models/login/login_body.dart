@@ -9,9 +9,10 @@ class LoginBody {
   @JsonKey(name: 'grant_type')
   String grantType;
 
-  LoginBody(this.username, this.password, this.grantType);
+  LoginBody({this.username, this.password, this.grantType});
 
-  factory LoginBody.fromJson(Map<String, dynamic> json) => _$LoginBodyFromJson(json);
+  factory LoginBody.fromJson(Map<String, dynamic> json) =>
+      _$LoginBodyFromJson(json);
 
   Map<String, dynamic> toJson() => _$LoginBodyToJson(this);
 

@@ -242,10 +242,6 @@ class _AduanPageState extends State<AduanPage> {
             padding: EdgeInsets.only(top: 40, left: 30, right: 30),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
             ),
             child: Form(
               key: _formKey,

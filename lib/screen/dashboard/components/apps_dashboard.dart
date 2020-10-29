@@ -42,7 +42,6 @@ class AppsDashboard extends StatelessWidget {
               child: InkWell(
                 splashColor: Colors.amberAccent,
                 onTap: () {
-                  print('aduan clicked.');
                   Navigator.pushNamed(context, '/landing-aduan-page');
                 },
                 child: Column(

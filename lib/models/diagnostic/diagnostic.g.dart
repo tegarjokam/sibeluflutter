@@ -10,7 +10,7 @@ Diagnostic _$DiagnosticFromJson(Map<String, dynamic> json) {
   return Diagnostic(
     json['status'] as int,
     json['message'] as String,
-    json['unix_timestamp'] as int,
+    json['unix_timestamp'] as String,
   );
 }
 
@@ -18,5 +18,5 @@ Map<String, dynamic> _$DiagnosticToJson(Diagnostic instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
-      'unix_timestamp': instance.unixTimestamp,
+      'unix_timestamp': instance.path,
     };

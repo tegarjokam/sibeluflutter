@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sibeluapp/models/roles/roles.dart';
 import 'package:sibeluapp/screen/aduan/aduan_page.dart';
 import 'package:sibeluapp/screen/aduan/landing_aduan_page.dart';
 import 'package:sibeluapp/screen/dashboard/dashboard.dart';
@@ -12,6 +13,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
   runApp(MyApp());
+
+  List<String> roles = ["ROLE_EMPLOYEE", "ROLE_ADMIN"];
+
+  RolesBody roleModel = new RolesBody(roles: roles);
+  print('apakah user adalah admin ? ${roleModel.roles.contains('ROLE_ADMIN')}');
 }
 
 class MyApp extends StatelessWidget {

@@ -8,9 +8,9 @@ part of 'login_body.dart';
 
 LoginBody _$LoginBodyFromJson(Map<String, dynamic> json) {
   return LoginBody(
-    json['username'] as String,
-    json['password'] as String,
-    json['grant_type'] as String,
+    username: json['username'] as String,
+    password: json['password'] as String,
+    grantType: json['grant_type'] as String,
   );
 }
 

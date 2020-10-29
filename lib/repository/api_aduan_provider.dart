@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:sibeluapp/models/aduan/aduan_body.dart';
 import 'package:sibeluapp/models/diagnostic/diagnostic.dart';
+import 'package:sibeluapp/models/roles/roles.dart';
 import 'package:sibeluapp/util/dio_logging_interceptors.dart';
 import '../constants.dart';
 
@@ -32,26 +33,23 @@ class ApiAduanProvider {
     }
   }
 
-  // Future<Token> loginUser(LoginBody loginBody) async {
-  //   try {
-  //     final response = await _dio.post(
-  //       'oauth/token',
-  //       data: FormData.fromMap(loginBody.toJson()),
-  //       options: Options(
-  //         headers: {
-  //           'Authorization': 'Basic ${base64Encode(
-  //             utf8.encode('$clientId:$clientSecret'),
-  //           )}',
-  //         },
-  //       ),
-  //     );
-  //     return Token.fromJson(response.data);
-  //   } catch (error, stacktrace) {
-  //     print('ERRROORRR ====>>>>>>');
-  //     // _printError(error, stacktrace);
-  //     return Token.withError('$error');
-  //   }
-  // }
+  Future<RolesBody> getRoles() async {
+    try {
+      final response = await _dio.get(
+        'api/rest/account/v1/roles',
+        options: Options(
+          headers: {
+            'requirestoken': true,
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+      return RolesBody.fromJson(response.data);
+    } catch (error, stacktrace) {
+      _printError(error, stacktrace);
+      return RolesBody.withError('$error');
+    }
+  }
 
   void _printError(error, StackTrace stacktrace) {
     debugPrint('error: $error & stacktrace: $stacktrace');

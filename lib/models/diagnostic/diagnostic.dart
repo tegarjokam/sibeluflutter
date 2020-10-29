@@ -7,13 +7,14 @@ class Diagnostic {
   int status;
   String message;
   @JsonKey(name: 'unix_timestamp')
-  int unixTimestamp;
+  String path;
   @JsonKey(ignore: true)
   String error;
 
-  Diagnostic(this.status, this.message, this.unixTimestamp);
+  Diagnostic(this.status, this.message, this.path);
 
-  factory Diagnostic.fromJson(Map<String, dynamic> json) => _$DiagnosticFromJson(json);
+  factory Diagnostic.fromJson(Map<String, dynamic> json) =>
+      _$DiagnosticFromJson(json);
 
   Diagnostic.withError(this.error);
 
@@ -21,6 +22,6 @@ class Diagnostic {
 
   @override
   String toString() {
-    return 'Diagnostic{status: $status, message: $message, unixTimestamp: $unixTimestamp}';
+    return 'Diagnostic{status: $status, path: $path, message: $message, error : $error';
   }
 }

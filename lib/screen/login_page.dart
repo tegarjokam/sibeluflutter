@@ -112,10 +112,10 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 print('Login Button Pressed');
                 _loginBloc.add(
-                  LoginEvent(
-                    LoginBody(_controllerUsername.text,
-                        _controllerPassword.text, 'password'),
-                  ),
+                  LoginEvent(LoginBody(
+                      username: _controllerUsername.text,
+                      password: _controllerPassword.text,
+                      grantType: 'password')),
                 );
               },
               padding: EdgeInsets.all(15.0),
