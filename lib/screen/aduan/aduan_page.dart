@@ -238,7 +238,7 @@ class _AduanPageState extends State<AduanPage> {
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            margin: EdgeInsets.only(top: 30),
+            // margin: EdgeInsets.only(top: 30),
             padding: EdgeInsets.only(top: 40, left: 30, right: 30),
             decoration: BoxDecoration(
               color: Colors.white,

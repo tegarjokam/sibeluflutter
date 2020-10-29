@@ -25,10 +25,94 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
     super.initState();
   }
 
-  Widget _buildLaporkan() {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: buildAppBar(),
+        body: BlocProvider<AduanRolesBloc>(
+          create: (context) => _aduanRolesBloc,
+          child: BlocListener<AduanRolesBloc, AduanRolesState>(
+            listener: (BuildContext context, state) {
+              if (state is AduanRolesFailure) {
+                String title = 'info';
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    if (Platform.isIOS) {
+                      return CupertinoAlertDialog(
+                        title: Text(title),
+                        content: Text(state.error),
+                      );
+                    } else {
+                      return AlertDialog(
+                        title: Text(title),
+                        content: Text(state.error),
+                      );
+                    }
+                  },
+                );
+              } else if (state is AduanRolesSuccess) {
+                print('SUKSES');
+                print('ROLES BODY = ${state.rolesBody.roles}');
+                print(
+                    'APAKAH USER ADALAH ADMIN ? ${state.rolesBody.roles.contains('ROLE_ADMIN')}');
+                if (state.rolesBody.roles.contains('ROLE_ADMIN')) {
+                  return PageView(
+                    children: [
+                      MainAduanLandingPage(),
+                      AduanAdminPage(),
+                    ],
+                  );
+                } else {
+                  return PageView(
+                    children: [MainAduanLandingPage()],
+                  );
+                }
+              }
+            },
+            child: BlocBuilder<AduanRolesBloc, AduanRolesState>(
+              builder: (context, state) {
+                if (state is AduanRolesLoading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state is AduanRolesSuccess) {
+                  if (state.rolesBody.roles.contains('ROLE_ADMIN')) {
+                    return PageView(
+                      children: [
+                        MainAduanLandingPage(),
+                        AduanAdminPage(),
+                      ],
+                    );
+                  } else {
+                    return PageView(
+                      children: [MainAduanLandingPage()],
+                    );
+                  }
+                }
+              },
+            ),
+          ),
+        ));
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+        backgroundColor: Colors.blue,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ));
+  }
+}
+
+class MainAduanLandingPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(top: 30),
+      // margin: EdgeInsets.only(top: 30),
       padding: EdgeInsets.only(top: 40, left: 30, right: 30),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -69,86 +153,5 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
         ],
       ),
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: buildAppBar(),
-        body: BlocProvider<AduanRolesBloc>(
-          create: (context) => _aduanRolesBloc,
-          child: BlocListener<AduanRolesBloc, AduanRolesState>(
-            listener: (BuildContext context, state) {
-              if (state is AduanRolesFailure) {
-                String title = 'info';
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    if (Platform.isIOS) {
-                      return CupertinoAlertDialog(
-                        title: Text(title),
-                        content: Text(state.error),
-                      );
-                    } else {
-                      return AlertDialog(
-                        title: Text(title),
-                        content: Text(state.error),
-                      );
-                    }
-                  },
-                );
-              } else if (state is AduanRolesSuccess) {
-                print('SUKSES');
-                print('ROLES BODY = ${state.rolesBody.roles}');
-                print(
-                    'APAKAH USER ADALAH ADMIN ? ${state.rolesBody.roles.contains('ROLE_ADMIN')}');
-                if (state.rolesBody.roles.contains('ROLE_ADMIN')) {
-                  return PageView(
-                    children: [
-                      MainLandingAduanPage(),
-                      AduanAdminPage(),
-                    ],
-                  );
-                } else {
-                  return PageView(
-                    children: [MainLandingAduanPage()],
-                  );
-                }
-              }
-            },
-            child: BlocBuilder<AduanRolesBloc, AduanRolesState>(
-              builder: (context, state) {
-                if (state is AduanRolesLoading) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (state is AduanRolesSuccess) {
-                  if (state.rolesBody.roles.contains('ROLE_ADMIN')) {
-                    return PageView(
-                      children: [
-                        _buildLaporkan(),
-                        AduanAdminPage(),
-                      ],
-                    );
-                  } else {
-                    return PageView(
-                      children: [_buildLaporkan()],
-                    );
-                  }
-                }
-              },
-            ),
-          ),
-        ));
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-        backgroundColor: Colors.blue,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ));
   }
 }
