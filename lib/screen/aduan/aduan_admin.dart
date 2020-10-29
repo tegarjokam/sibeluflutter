@@ -9,7 +9,7 @@ class _AduanAdminPageState extends State<AduanAdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.amber,
       body: Center(
         child: Text('Admin Aduan'),
       ),

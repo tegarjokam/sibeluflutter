@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Sibelu',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.yellow,
         accentColor: Colors.amber[50],
         canvasColor: Colors.blue,
         fontFamily: 'OpenSans',
