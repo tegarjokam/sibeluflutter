@@ -135,7 +135,7 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
               );
             } else {
               return Scaffold(
-                appBar: buildAppBar(),
+                // appBar: buildAppBar(),
                 bottomNavigationBar: BottomNavigationBar(
                   selectedItemColor: Colors.amber,
                   currentIndex: bottomSelectIndex,
@@ -166,7 +166,7 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
             } else if (state is AduanRolesSuccess) {
               if (state.rolesBody.roles.contains('ROLE_ADMIN')) {
                 return Scaffold(
-                  appBar: buildAppBar(),
+                  // appBar: buildAppBar(),
                   bottomNavigationBar: BottomNavigationBar(
                     selectedItemColor: Colors.amber,
                     currentIndex: bottomSelectIndex,
@@ -251,7 +251,7 @@ class MainAduanLandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.only(top: 40, left: 30, right: 30),
+      padding: EdgeInsets.only(left: 30, right: 30),
       decoration: BoxDecoration(
         color: Colors.white,
       ),
@@ -270,7 +270,7 @@ class MainAduanLandingPage extends StatelessWidget {
             tag: 'logo-aduan',
             child: Image.asset(
               'assets/img/logo_aduan.png',
-              height: 200,
+              height: MediaQuery.of(context).size.height * 0.2,
             ),
           ),
           SizedBox(

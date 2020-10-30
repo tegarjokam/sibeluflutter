@@ -13,7 +13,11 @@ AduanBody _$AduanBodyFromJson(Map<String, dynamic> json) {
     eventDate: json['eventDate'] as String,
     jenisAduan: json['jenisAduan'] as String,
     kronologi: json['kronologi'] as String,
-  );
+    result: json['result'] as String,
+  )
+    ..statusTL = json['statusTL'] as String
+    ..userId = json['userId'] as String
+    ..fullName = json['fullName'] as String;
 }
 
 Map<String, dynamic> _$AduanBodyToJson(AduanBody instance) => <String, dynamic>{
@@ -22,4 +26,8 @@ Map<String, dynamic> _$AduanBodyToJson(AduanBody instance) => <String, dynamic>{
       'eventDate': instance.eventDate,
       'jenisAduan': instance.jenisAduan,
       'kronologi': instance.kronologi,
+      'statusTL': instance.statusTL,
+      'result': instance.result,
+      'userId': instance.userId,
+      'fullName': instance.fullName,
     };

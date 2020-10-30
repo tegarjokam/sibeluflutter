@@ -9,6 +9,10 @@ class AduanBody {
   String eventDate;
   String jenisAduan;
   String kronologi;
+  String statusTL;
+  String result;
+  String userId;
+  String fullName;
   @JsonKey(ignore: true)
   String error;
 
@@ -18,6 +22,7 @@ class AduanBody {
       this.eventDate,
       this.jenisAduan,
       this.kronologi,
+      this.result,
       this.error});
 
   factory AduanBody.fromJson(Map<String, dynamic> json) =>

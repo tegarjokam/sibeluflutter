@@ -239,7 +239,7 @@ class _AduanPageState extends State<AduanPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             // margin: EdgeInsets.only(top: 30),
-            padding: EdgeInsets.only(top: 40, left: 30, right: 30),
+            padding: EdgeInsets.only(left: 30, right: 30),
             decoration: BoxDecoration(
               color: Colors.white,
             ),
@@ -248,6 +248,9 @@ class _AduanPageState extends State<AduanPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 30,
+                    ),
                     Hero(
                       tag: 'logo-aduan',
                       child: Image.asset(
