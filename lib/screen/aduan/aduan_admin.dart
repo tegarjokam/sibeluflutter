@@ -84,7 +84,7 @@ class _AduanAdminPageState extends State<AduanAdminPage> {
   Widget build(BuildContext context) {
     return BlocProvider<AduanAdminBloc>(
       create: (context) => _aduanAdminBloc,
-      child: BlocListener<AduanAdminBloc, AduanAdminState>(
+      child: BlocConsumer<AduanAdminBloc, AduanAdminState>(
         listener: (context, state) {
           if (state is AduanAdminFailure) {
             String title = 'info';
@@ -104,56 +104,9 @@ class _AduanAdminPageState extends State<AduanAdminPage> {
                 }
               },
             );
-          } else if (state is AduanAdminSuccess) {
-            return Scaffold(
-              backgroundColor: Colors.white,
-              body: ListView(
-                children: [
-                  _buildTitlePage(context),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                  ),
-                  ListView.builder(
-                    physics: ScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: state.listAduan.result.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      AduanBody aduan = state.listAduan.result[index];
-                      return Container(
-                        margin:
-                            EdgeInsets.only(left: 10, right: 10, bottom: 20),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Color(0xffC6E1FF)),
-                        child: Stack(
-                          overflow: Overflow.visible,
-                          children: [
-                            AduanTiles(aduan),
-                            // Positioned(
-                            //   top: -15,
-                            //   right: -15,
-                            //   child: Icon(
-                            //     Icons.check_circle,
-                            //     size: 40,
-                            //     color: Color(0xFF48A500),
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            );
-          } else {
-            print('Something error on the bloc');
           }
         },
-        child: BlocBuilder<AduanAdminBloc, AduanAdminState>(
-            builder: (context, state) {
+        builder: (context, state) {
           if (state is AduanAdminLoading) {
             return Center(
               child: CircularProgressIndicator(),
@@ -205,7 +158,7 @@ class _AduanAdminPageState extends State<AduanAdminPage> {
           } else {
             return ServerErrorPage();
           }
-        }),
+        },
       ),
     );
   }
@@ -218,9 +171,21 @@ class AduanTiles extends ListTile {
             backgroundColor: Colors.deepOrangeAccent,
             child: Text(aduan.email[0]),
           ),
-          title: Text(
-            aduan.jenisAduan,
-            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                aduan.jenisAduan,
+                style:
+                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                DateFormat.yMMMMd()
+                    .format(DateFormat('dd-MM-yyyy').parse(aduan.createdTime)),
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
           subtitle: Text(
             aduan.kronologi.substring(1, 15).trim() + '...',
@@ -232,7 +197,7 @@ class AduanTiles extends ListTile {
                   color: Color(0xFF48A500),
                 )
               : Icon(
-                  Icons.delete_outline,
+                  Icons.pending_rounded,
                   size: 40,
                   color: Color(0xFF48A500),
                 ),

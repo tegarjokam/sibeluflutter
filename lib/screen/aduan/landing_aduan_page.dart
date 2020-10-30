@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sibeluapp/bloc/aduan/admin_aduan.dart';
 import 'package:sibeluapp/bloc/aduan/aduan_roles_bloc.dart';
 import 'package:sibeluapp/repository/api_aduan_repository.dart';
 import 'package:sibeluapp/screen/aduan/aduan_admin.dart';
@@ -83,83 +84,29 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AduanRolesBloc>(
-      create: (context) => _aduanRolesBloc,
-      child: BlocListener<AduanRolesBloc, AduanRolesState>(
-        listener: (BuildContext context, state) {
-          if (state is AduanRolesFailure) {
-            String title = 'info';
-            showDialog(
-              context: context,
-              builder: (context) {
-                if (Platform.isIOS) {
-                  return CupertinoAlertDialog(
-                    title: Text(title),
-                    content: Text(state.error),
-                  );
-                } else {
-                  return AlertDialog(
-                    title: Text(title),
-                    content: Text(state.error),
-                  );
-                }
-              },
-            );
-          } else if (state is AduanRolesSuccess) {
-            print('SUKSES');
-            print('ROLES BODY = ${state.rolesBody.roles}');
-            print(
-                'APAKAH USER ADALAH ADMIN ? ${state.rolesBody.roles.contains('ROLE_ADMIN')}');
-            if (state.rolesBody.roles.contains('ROLE_ADMIN')) {
-              return Scaffold(
-                appBar: buildAppBar(),
-                bottomNavigationBar: BottomNavigationBar(
-                  selectedItemColor: Colors.amber,
-                  currentIndex: bottomSelectIndex,
-                  type: BottomNavigationBarType.fixed,
-                  onTap: (index) {
-                    bottomTapped(index);
-                  },
-                  items: buildBottomNavBarItems('ROLE_ADMIN'),
-                ),
-                body: PageView(
-                  controller: pageController,
-                  onPageChanged: (index) {
-                    pageChanged(index);
-                  },
-                  children: [
-                    MainAduanLandingPage(),
-                    AduanAdminPage(),
-                    MyAduanPage(),
-                  ],
-                ),
-              );
-            } else {
-              return Scaffold(
-                // appBar: buildAppBar(),
-                bottomNavigationBar: BottomNavigationBar(
-                  selectedItemColor: Colors.amber,
-                  currentIndex: bottomSelectIndex,
-                  type: BottomNavigationBarType.fixed,
-                  onTap: (index) {
-                    bottomTapped(index);
-                  },
-                  items: buildBottomNavBarItems('ROLE_ADMIN'),
-                ),
-                body: PageView(
-                  controller: pageController,
-                  onPageChanged: (index) {
-                    pageChanged(index);
-                  },
-                  children: [
-                    MainAduanLandingPage(),
-                    MyAduanPage(),
-                  ],
-                ),
+        create: (context) => _aduanRolesBloc,
+        child: BlocConsumer<AduanRolesBloc, AduanRolesState>(
+          listener: (BuildContext context, state) {
+            if (state is AduanRolesFailure) {
+              String title = 'info';
+              showDialog(
+                context: context,
+                builder: (context) {
+                  if (Platform.isIOS) {
+                    return CupertinoAlertDialog(
+                      title: Text(title),
+                      content: Text(state.error),
+                    );
+                  } else {
+                    return AlertDialog(
+                      title: Text(title),
+                      content: Text(state.error),
+                    );
+                  }
+                },
               );
             }
-          }
-        },
-        child: BlocBuilder<AduanRolesBloc, AduanRolesState>(
+          },
           builder: (context, state) {
             if (state is AduanRolesLoading) {
               return Center(child: CircularProgressIndicator());
@@ -215,9 +162,7 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
               return ServerErrorPage();
             }
           },
-        ),
-      ),
-    );
+        ));
   }
 
   AppBar buildAppBar() {

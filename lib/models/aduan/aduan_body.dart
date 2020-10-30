@@ -7,6 +7,7 @@ class AduanBody {
   String email;
   String phoneNumber;
   String eventDate;
+  String createdTime;
   String jenisAduan;
   String kronologi;
   String statusTL;
@@ -20,6 +21,7 @@ class AduanBody {
       {this.email,
       this.phoneNumber,
       this.eventDate,
+      this.createdTime,
       this.jenisAduan,
       this.kronologi,
       this.result,
