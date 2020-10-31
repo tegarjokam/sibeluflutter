@@ -206,7 +206,7 @@ class _AduanPageState extends State<AduanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: buildAppBar(),
+      // appBar: buildAppBar(),
       body: BlocProvider<AduanBloc>(
         create: (context) => _aduanBloc,
         child: BlocListener<AduanBloc, AduanState>(

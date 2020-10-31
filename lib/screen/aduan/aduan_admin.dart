@@ -108,8 +108,13 @@ class _AduanAdminPageState extends State<AduanAdminPage> {
         },
         builder: (context, state) {
           if (state is AduanAdminLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
+            return Scaffold(
+              backgroundColor: Colors.white,
+              body: Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                ),
+              ),
             );
           } else if (state is AduanAdminSuccess) {
             return Scaffold(
@@ -137,7 +142,7 @@ class _AduanAdminPageState extends State<AduanAdminPage> {
                         child: Stack(
                           overflow: Overflow.visible,
                           children: [
-                            AduanTiles(aduan),
+                            AduanTiles(aduan, context),
                             // Positioned(
                             //   top: -15,
                             //   right: -15,
@@ -165,7 +170,7 @@ class _AduanAdminPageState extends State<AduanAdminPage> {
 }
 
 class AduanTiles extends ListTile {
-  AduanTiles(AduanBody aduan)
+  AduanTiles(AduanBody aduan, BuildContext context)
       : super(
           leading: CircleAvatar(
             backgroundColor: Colors.deepOrangeAccent,
@@ -180,7 +185,7 @@ class AduanTiles extends ListTile {
                     TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
               Text(
-                DateFormat.yMMMMd()
+                DateFormat('d MMMM yyyy')
                     .format(DateFormat('dd-MM-yyyy').parse(aduan.createdTime)),
                 style:
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
@@ -199,10 +204,11 @@ class AduanTiles extends ListTile {
               : Icon(
                   Icons.pending_rounded,
                   size: 40,
-                  color: Color(0xFF48A500),
+                  color: Colors.pinkAccent,
                 ),
           onTap: () {
-            print('click !');
+            Navigator.pushNamed(context, '/detail-item-aduan-admin',
+                arguments: <String, AduanBody>{'result': aduan});
           },
         );
 }

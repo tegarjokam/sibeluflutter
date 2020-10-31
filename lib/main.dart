@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sibeluapp/models/roles/roles.dart';
 import 'package:sibeluapp/screen/aduan/aduan_page.dart';
+import 'package:sibeluapp/screen/aduan/detail_aduan_admin.dart';
 import 'package:sibeluapp/screen/aduan/landing_aduan_page.dart';
 import 'package:sibeluapp/screen/dashboard/dashboard.dart';
 import 'package:sibeluapp/screen/landing_dashboard_page.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         '/dashboard': (ctx) => DashboardScreen(),
         '/landing-aduan-page': (ctx) => LandingAduanPage(),
         '/aduan-page': (ctx) => AduanPage(),
+        '/detail-item-aduan-admin': (ctx) => DetailAduanAdminPage(),
       },
     );
   }

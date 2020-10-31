@@ -109,11 +109,17 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
           },
           builder: (context, state) {
             if (state is AduanRolesLoading) {
-              return Center(child: CircularProgressIndicator());
+              return Scaffold(
+                  backgroundColor: Colors.white,
+                  body: Center(
+                      child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                  )));
             } else if (state is AduanRolesSuccess) {
               if (state.rolesBody.roles.contains('ROLE_ADMIN')) {
                 return Scaffold(
                   // appBar: buildAppBar(),
+                  backgroundColor: Colors.white,
                   bottomNavigationBar: BottomNavigationBar(
                     selectedItemColor: Colors.amber,
                     currentIndex: bottomSelectIndex,
@@ -137,7 +143,7 @@ class _LandingAduanPageState extends State<LandingAduanPage> {
                 );
               } else {
                 return Scaffold(
-                  appBar: buildAppBar(),
+                  // appBar: buildAppBar(),
                   bottomNavigationBar: BottomNavigationBar(
                     currentIndex: bottomSelectIndex,
                     type: BottomNavigationBarType.fixed,

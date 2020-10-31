@@ -11,9 +11,10 @@ class _MyAduanPageState extends State<MyAduanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        title: Text("Flutter"),
-      ),
+      backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   title: Text("Flutter"),
+      // ),
       body: Center(
         child: RaisedButton(
           onPressed: () {
