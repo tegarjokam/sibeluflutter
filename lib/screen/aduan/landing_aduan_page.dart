@@ -13,12 +13,12 @@ import 'package:sibeluapp/screen/error/server_error.dart';
 
 import 'components/custom_button.dart';
 
-class LandingAduanPage extends StatefulWidget {
+class LandingAduanPagea extends StatefulWidget {
   @override
   _LandingAduanPageState createState() => _LandingAduanPageState();
 }
 
-class _LandingAduanPageState extends State<LandingAduanPage> {
+class _LandingAduanPageState extends State<LandingAduanPagea> {
   final AduanRolesBloc _aduanRolesBloc = AduanRolesBloc(AduanRolesInitial());
   ApiAduanRepository apiAduanRepository = ApiAduanRepository();
   int bottomSelectIndex = 0;

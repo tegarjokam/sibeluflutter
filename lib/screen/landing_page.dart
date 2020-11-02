@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sibeluapp/screen/login_page.dart';
 
 class LandingPage extends StatelessWidget {
@@ -21,46 +22,37 @@ class LandingPage extends StatelessWidget {
           children: [
             Image.asset(
               'assets/img/logo_bc.png',
-              scale: 7 / 5,
+              height: ScreenUtil().setWidth(300),
+              width: ScreenUtil().setWidth(400),
             ),
             Text(
               'SiBeLu.',
               style: TextStyle(
-                  fontSize: 50,
+                  fontSize: ScreenUtil().setSp(90),
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).textTheme.bodyText1.color),
             ),
             Text(
               'Design and developed by BCKanwilMaluku',
               style: TextStyle(
-                  fontSize: 11,
+                  fontSize: ScreenUtil().setSp(24),
                   color: Theme.of(context).textTheme.bodyText1.color),
             ),
             SizedBox(
-              height: 10,
+              height: ScreenUtil().setHeight(20),
             ),
             Divider(
-              indent: MediaQuery.of(context).size.width * 0.2,
-              endIndent: MediaQuery.of(context).size.width * 0.2,
+              indent: ScreenUtil().setWidth(154),
+              endIndent: ScreenUtil().setWidth(154),
               color: Colors.white,
               thickness: 2,
             ),
             SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Sibelu merupakan aplikasi yang dibuat untuk memudahkan proses bisnis pada Kantor Wilayah DJBC Maluku',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 11,
-                  color: Theme.of(context).textTheme.bodyText1.color),
-            ),
-            SizedBox(
-              height: 20,
+              height: ScreenUtil().setHeight(20),
             ),
             Container(
-              height: 40,
-              width: 150,
+              height: ScreenUtil().setWidth(80),
+              width: ScreenUtil().setWidth(300),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: Colors.white),
@@ -81,7 +73,7 @@ class LandingPage extends StatelessWidget {
                   child: Text(
                     'Sign In',
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: ScreenUtil().setSp(50),
                         color: Theme.of(context).textTheme.bodyText1.color),
                   ),
                 ),
@@ -95,6 +87,11 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        designSize: Size(768, 1280), allowFontScaling: true);
+    print('ukuran ${ScreenUtil().setWidth(154)}');
+    double a = MediaQuery.of(context).size.width * 0.2;
+    print('size $a');
     return Scaffold(
       body: PageView(
         children: [

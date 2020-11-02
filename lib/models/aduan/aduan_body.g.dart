@@ -8,6 +8,7 @@ part of 'aduan_body.dart';
 
 AduanBody _$AduanBodyFromJson(Map<String, dynamic> json) {
   return AduanBody(
+    id: json['id'] as String,
     email: json['email'] as String,
     phoneNumber: json['phoneNumber'] as String,
     eventDate: json['eventDate'] as String,
@@ -22,6 +23,7 @@ AduanBody _$AduanBodyFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AduanBodyToJson(AduanBody instance) => <String, dynamic>{
+      'id': instance.id,
       'email': instance.email,
       'phoneNumber': instance.phoneNumber,
       'eventDate': instance.eventDate,

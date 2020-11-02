@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../../../size_config_dashboard.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppsDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-      width: getProportionateScreenWidth(313),
-      height: getProportionateScreenHeight(100),
+      width: ScreenUtil().setWidth(700),
+      height: ScreenUtil().setWidth(210),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -42,7 +41,7 @@ class AppsDashboard extends StatelessWidget {
               child: InkWell(
                 splashColor: Colors.amberAccent,
                 onTap: () {
-                  Navigator.pushNamed(context, '/landing-aduan-page');
+                  Navigator.of(context).pushNamed('/aduan/landing');
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,14 +50,17 @@ class AppsDashboard extends StatelessWidget {
                       tag: 'logo-aduan',
                       child: Image.asset(
                         'assets/img/logo_aduan.png',
-                        height: 40,
-                        width: 40,
+                        height: ScreenUtil().setHeight(80),
+                        width: ScreenUtil().setHeight(80),
                       ),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Text('Aduan')
+                    Text(
+                      'Aduan',
+                      style: TextStyle(fontSize: ScreenUtil().setSp(27)),
+                    )
                   ],
                 ),
               ),

@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sibeluapp/bloc/login/login_bloc.dart';
 import 'package:sibeluapp/injector/injector.dart';
 import 'package:sibeluapp/models/login/login_body.dart';
 import 'package:sibeluapp/repository/api_auth_repository.dart';
 import 'package:sibeluapp/storage/sharedpreferences/shared_preferences_manager.dart';
-import 'package:sibeluapp/widget/widget_card_loading.dart';
 
 import '../constants.dart';
 
@@ -34,11 +34,11 @@ class _LoginPageState extends State<LoginPage> {
           'Username',
           style: kLabelStyle,
         ),
-        SizedBox(height: 10.0),
+        SizedBox(height: ScreenUtil().setHeight(25)),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
-          height: 60.0,
+          height: ScreenUtil().setWidth(120),
           child: TextField(
             controller: _controllerUsername,
             keyboardType: TextInputType.name,
@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
+              contentPadding: EdgeInsets.only(top: ScreenUtil().setWidth(25)),
               prefixIcon: Icon(
                 Icons.account_circle,
                 color: Colors.white,
@@ -70,11 +70,11 @@ class _LoginPageState extends State<LoginPage> {
           'Password',
           style: kLabelStyle,
         ),
-        SizedBox(height: 10.0),
+        SizedBox(height: ScreenUtil().setHeight(25)),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
-          height: 60.0,
+          height: ScreenUtil().setWidth(120),
           child: TextField(
             controller: _controllerPassword,
             obscureText: true,
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
+              contentPadding: EdgeInsets.only(top: ScreenUtil().setWidth(25)),
               prefixIcon: Icon(
                 Icons.lock,
                 color: Colors.white,
@@ -105,10 +105,10 @@ class _LoginPageState extends State<LoginPage> {
           return CircularProgressIndicator();
         } else {
           return Container(
-            padding: EdgeInsets.symmetric(vertical: 25.0),
+            padding: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(60)),
             width: double.infinity,
             child: RaisedButton(
-              elevation: 5.0,
+              elevation: ScreenUtil().setHeight(20),
               onPressed: () {
                 print('Login Button Pressed');
                 _loginBloc.add(
@@ -127,8 +127,8 @@ class _LoginPageState extends State<LoginPage> {
                 'LOGIN',
                 style: TextStyle(
                   color: Color(0xFF527DAA),
-                  letterSpacing: 1.5,
-                  fontSize: 18.0,
+                  letterSpacing: ScreenUtil().setSp(10),
+                  fontSize: ScreenUtil().setSp(35),
                   fontWeight: FontWeight.bold,
                   fontFamily: 'OpenSans',
                 ),
@@ -190,8 +190,8 @@ class _LoginPageState extends State<LoginPage> {
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 120.0,
+                    horizontal: ScreenUtil().setWidth(80),
+                    vertical: ScreenUtil().setWidth(210),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -200,17 +200,17 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           'Sign In',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.amber,
                             fontFamily: 'OpenSans',
-                            fontSize: 30.0,
+                            fontSize: ScreenUtil().setSp(60),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: ScreenUtil().setHeight(30)),
                       _buildUsernameTF(),
                       SizedBox(
-                        height: 30.0,
+                        height: ScreenUtil().setHeight(30),
                       ),
                       _buildPasswordTF(),
                       _buildLoginBtn(),

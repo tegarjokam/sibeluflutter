@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final GestureTapCallback onPressed;
 
-  CustomButton({@required this.onPressed});
+  CustomButton({
+    @required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class CustomButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: const <Widget>[
             Text(
-              "LAPORKAN",
+              "SIPUMA",
               maxLines: 1,
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),

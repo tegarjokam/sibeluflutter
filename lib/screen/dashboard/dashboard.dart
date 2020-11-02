@@ -31,10 +31,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   AppBar buildAppBar() {
     return AppBar(
-        backgroundColor: Colors.transparent,
+        title: Text('Dashboard'),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
           onPressed: () {},
         ));
   }

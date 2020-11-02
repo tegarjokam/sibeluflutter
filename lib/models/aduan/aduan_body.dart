@@ -4,6 +4,7 @@ part 'aduan_body.g.dart';
 
 @JsonSerializable()
 class AduanBody {
+  String id;
   String email;
   String phoneNumber;
   String eventDate;
@@ -18,7 +19,8 @@ class AduanBody {
   String error;
 
   AduanBody(
-      {this.email,
+      {this.id,
+      this.email,
       this.phoneNumber,
       this.eventDate,
       this.createdTime,

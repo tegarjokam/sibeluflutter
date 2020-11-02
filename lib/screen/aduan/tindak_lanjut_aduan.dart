@@ -1,13 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:sibeluapp/models/aduan/aduan_body.dart';
 import 'package:sibeluapp/screen/aduan/components/hero_header.dart';
 
-class DetailAduanAdminPage extends StatefulWidget {
+class TindakLanjutAduan extends StatefulWidget {
   @override
-  _DetailAduanAdminPageState createState() => _DetailAduanAdminPageState();
+  _TindakLanjutAduanState createState() => _TindakLanjutAduanState();
 }
 
-class _DetailAduanAdminPageState extends State<DetailAduanAdminPage> {
+class _TindakLanjutAduanState extends State<TindakLanjutAduan> {
+  String _tindakLanjut;
+  MultipartFile _file;
+
+  // Widget _buildChronology() {
+  //   return TextFormField(
+  //     maxLines: 10,
+  //     decoration: InputDecoration(
+  //       labelText: 'Chronology',
+  //     ),
+  //     onSaved: (val) => _chronology = val,
+  //     onChanged: (val) {
+  //       _chronology = val;
+  //       print('chronology : $_chronology');
+  //       print('length : ${_chronology.toString().length}');
+  //     },
+  //     validator: (value) {
+  //       if (value.isEmpty) {
+  //         return "can't be empty";
+  //       }
+  //       return null;
+  //     },
+  //   );
+  // }
+
   Widget _scrollView(BuildContext context, Map<String, AduanBody> data) {
     return Container(
       child: CustomScrollView(
@@ -88,29 +113,13 @@ class _DetailAduanAdminPageState extends State<DetailAduanAdminPage> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   _buildButton(
-                      context, 'Tindak Lanjut', Color(0xFFFF0000), Colors.red,
-                      () {
-                    Navigator.pushNamed(context, '/tindaklanjut-aduan',
-                        arguments: <String, AduanBody>{
-                          'result': data['result']
-                        });
-                  })
+                      context, 'Edit', Color(0xFFFF0000), Colors.red, () {})
                 ],
               ),
             ),
           ]))
         ],
       ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final Map<String, AduanBody> data =
-        ModalRoute.of(context).settings.arguments;
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: _scrollView(context, data),
     );
   }
 
@@ -139,12 +148,22 @@ class _DetailAduanAdminPageState extends State<DetailAduanAdminPage> {
       ),
     );
   }
-}
 
-EdgeInsets _edgeInsetsForIndex(int index) {
-  if (index % 2 == 0) {
-    return EdgeInsets.only(top: 4.0, left: 8.0, right: 4.0, bottom: 4.0);
-  } else {
-    return EdgeInsets.only(top: 4.0, left: 4.0, right: 8.0, bottom: 4.0);
+  EdgeInsets _edgeInsetsForIndex(int index) {
+    if (index % 2 == 0) {
+      return EdgeInsets.only(top: 4.0, left: 8.0, right: 4.0, bottom: 4.0);
+    } else {
+      return EdgeInsets.only(top: 4.0, left: 4.0, right: 8.0, bottom: 4.0);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final Map<String, AduanBody> data =
+        ModalRoute.of(context).settings.arguments;
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: _scrollView(context, data),
+    );
   }
 }

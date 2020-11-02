@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sibeluapp/models/roles/roles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sibeluapp/screen/aduan/aduan_page.dart';
+import 'package:sibeluapp/screen/aduan/aduan_webview.dart';
 import 'package:sibeluapp/screen/aduan/detail_aduan_admin.dart';
-import 'package:sibeluapp/screen/aduan/landing_aduan_page.dart';
+import 'package:sibeluapp/screen/aduan/landing_aduan_page2.dart';
+import 'package:sibeluapp/screen/aduan/tindak_lanjut_aduan.dart';
 import 'package:sibeluapp/screen/dashboard/dashboard.dart';
 import 'package:sibeluapp/screen/landing_dashboard_page.dart';
 import 'package:sibeluapp/screen/landing_page.dart';
@@ -12,6 +14,7 @@ import 'injector/injector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await setupLocator();
   runApp(MyApp());
 }
@@ -20,6 +23,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // ScreenUtil.init(context,
+    //     designSize: Size(750, 1334), allowFontScaling: true);
     return MaterialApp(
       title: 'Sibelu',
       theme: ThemeData(
@@ -44,9 +49,11 @@ class MyApp extends StatelessWidget {
         '/landing-login-page': (ctx) => LandingDashboardPage(),
         '/login': (ctx) => LoginPage(),
         '/dashboard': (ctx) => DashboardScreen(),
-        '/landing-aduan-page': (ctx) => LandingAduanPage(),
-        '/aduan-page': (ctx) => AduanPage(),
-        '/detail-item-aduan-admin': (ctx) => DetailAduanAdminPage(),
+        '/aduan/landing': (ctx) => LandingAduanPage(),
+        '/aduan/webview': (ctx) => AduanWebview(),
+        // '/aduan-page': (ctx) => AduanPage(),
+        // '/detail-item-aduan-admin': (ctx) => DetailAduanAdminPage(),
+        // '/tindaklanjut-aduan': (ctx) => TindakLanjutAduan(),
       },
     );
   }
