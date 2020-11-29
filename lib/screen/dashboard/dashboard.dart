@@ -38,7 +38,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         leading: IconButton(
           icon: Icon(
             Icons.menu,
-            color: Colors.white,
+            color: Colors.black,
           ),
           onPressed: () {},
         ));

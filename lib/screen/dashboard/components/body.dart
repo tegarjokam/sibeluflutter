@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sibeluapp/constants.dart';
 import 'package:sibeluapp/screen/dashboard/components/dashboard_header.dart';
 import 'package:sibeluapp/screen/dashboard/components/section_title.dart';
@@ -22,7 +23,7 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           DashboardHeader(),
-          VerticalSpacing(of: 80),
+          VerticalSpacing(of: ScreenUtil().setWidth(140)),
           Announcement(),
           VerticalSpacing(),
           OfficeNews(),

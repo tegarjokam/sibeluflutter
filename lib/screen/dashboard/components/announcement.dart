@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sibeluapp/screen/dashboard/components/section_title.dart';
 
 import '../../../constants.dart';
@@ -53,31 +54,30 @@ class AnnouncementCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: getProportionateScreenWidth(150),
+      width: ScreenUtil().setWidth(300),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(
-              getProportionateScreenWidth(kDefaultPadding),
-            ),
-            width: 200,
+            padding: EdgeInsets.all(ScreenUtil().setWidth(30)),
+            width: ScreenUtil().setWidth(300),
             decoration: BoxDecoration(
               // border: Border.all(style: BorderStyle.solid),
-              color: Colors.yellow,
+              color: Colors.amberAccent,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
               boxShadow: [kDefaultShadow],
             ),
             child: Text(
               information.name,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: ScreenUtil().setSp(28),
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           Container(
-            width: getProportionateScreenWidth(150),
-            padding: EdgeInsets.all(
-              getProportionateScreenWidth(kDefaultPadding),
-            ),
+            width: ScreenUtil().setWidth(300),
+            padding: EdgeInsets.all(ScreenUtil().setWidth(30)),
             decoration: BoxDecoration(
               // border: Border.all(style: BorderStyle.solid),
               color: Colors.white,
@@ -91,7 +91,9 @@ class AnnouncementCard extends StatelessWidget {
               children: [
                 Text(
                   information.date,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: ScreenUtil().setSp(28),
+                      fontWeight: FontWeight.bold),
                 )
               ],
             ),

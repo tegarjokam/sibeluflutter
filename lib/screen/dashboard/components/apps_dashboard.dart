@@ -10,11 +10,15 @@ class AppsDashboard extends StatelessWidget {
       height: ScreenUtil().setWidth(210),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-              offset: Offset(5, 5),
-              blurRadius: 10,
+              spreadRadius: 10,
+              // offset: Offset(
+              //   5,
+              //   5,
+              // ),
+              blurRadius: 50,
               color: Colors.black.withOpacity(0.16)),
         ],
       ),
@@ -22,18 +26,14 @@ class AppsDashboard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Column(children: [
+            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               Container(
-                width: 35,
-                height: 35,
+                width: ScreenUtil().setHeight(80),
+                height: ScreenUtil().setHeight(80),
                 color: Colors.red,
-                margin: EdgeInsets.only(bottom: 5),
               ),
               Text('Siratu')
             ]),
-            SizedBox(
-              width: 10,
-            ),
             Material(
               shadowColor: Colors.black,
               color: Colors.white,
@@ -44,7 +44,7 @@ class AppsDashboard extends StatelessWidget {
                   Navigator.of(context).pushNamed('/aduan/landing');
                 },
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Hero(
                       tag: 'logo-aduan',
@@ -54,9 +54,6 @@ class AppsDashboard extends StatelessWidget {
                         width: ScreenUtil().setHeight(80),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
                     Text(
                       'Aduan',
                       style: TextStyle(fontSize: ScreenUtil().setSp(27)),
@@ -65,27 +62,44 @@ class AppsDashboard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: 10,
-            ),
-            Column(children: [
-              Container(
-                width: 35,
-                height: 35,
-                color: Colors.green,
-                margin: EdgeInsets.only(bottom: 5),
+            Material(
+              shadowColor: Colors.black,
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                splashColor: Colors.amberAccent,
+                onTap: () {
+                  Navigator.of(context).pushNamed('/capaian');
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      width: ScreenUtil().setHeight(80),
+                      height: ScreenUtil().setHeight(80),
+                      color: Colors.green,
+                    ),
+                    Text(
+                      'Capaian',
+                      style: TextStyle(fontSize: ScreenUtil().setSp(27)),
+                    )
+                  ],
+                ),
               ),
-              Text('Capaian')
-            ]),
-            SizedBox(
-              width: 10,
             ),
-            Column(children: [
+            // Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            //   Container(
+            //     width: ScreenUtil().setHeight(80),
+            //     height: ScreenUtil().setHeight(80),
+            //     color: Colors.green,
+            //   ),
+            //   Text('Capaian')
+            // ]),
+            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               Container(
-                width: 35,
-                height: 35,
+                width: ScreenUtil().setHeight(80),
+                height: ScreenUtil().setHeight(80),
                 color: Colors.amber,
-                margin: EdgeInsets.only(bottom: 5),
               ),
               Text('Hukum')
             ]),

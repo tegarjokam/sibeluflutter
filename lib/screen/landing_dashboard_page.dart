@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sibeluapp/bloc/dashboard/dashboard_user_bloc.dart';
 import 'package:sibeluapp/models/user_model.dart';
 import 'package:sibeluapp/screen/dashboard/dashboard.dart';
@@ -59,41 +60,38 @@ class _LandingDashboardPageState extends State<LandingDashboardPage> {
                           'Selamat Datang',
                           style: TextStyle(
                             color: Theme.of(context).textTheme.bodyText1.color,
-                            fontSize: 30,
+                            fontSize: ScreenUtil().setSp(50),
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        SizedBox(height: ScreenUtil().setHeight(30)),
                         Hero(
                             tag: 'profileImage',
                             child: ProfileImage(
                               imageUrl: user.imageUrl,
-                              width: 210.0,
-                              height: 210.0,
+                              width: ScreenUtil().setWidth(400),
+                              height: ScreenUtil().setWidth(300),
                             )),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        SizedBox(height: ScreenUtil().setHeight(30)),
                         Text(
                           '${user.fullName}',
                           style: TextStyle(
                             color: Theme.of(context).textTheme.bodyText1.color,
-                            fontSize: 25,
+                            fontSize: ScreenUtil().setSp(45),
                           ),
                         ),
+                        SizedBox(height: ScreenUtil().setHeight(10)),
                         Text(
                           'Pelaksana Pemeriksa',
                           style: TextStyle(
                             color: Colors.white54,
-                            fontSize: 15,
+                            fontSize: ScreenUtil().setSp(30),
                           ),
                         ),
                         Text(
                           'Kantor Wilayah DJBC Maluku',
                           style: TextStyle(
                             color: Colors.white54,
-                            fontSize: 15,
+                            fontSize: ScreenUtil().setHeight(30),
                           ),
                         ),
                       ],

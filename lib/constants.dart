@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sibeluapp/models/roles/roles.dart';
 
-final baseUrl = "http://192.168.1.4:8080/";
+final baseUrl = "http://192.168.1.5:8080/";
 final clientId = 'sibeluApp';
 final clientSecret = 'sibeluSecret';
 

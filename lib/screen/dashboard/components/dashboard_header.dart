@@ -50,7 +50,7 @@ class DashboardHeader extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: ScreenUtil().setHeight(10),
+                          height: ScreenUtil().setWidth(20),
                         ),
                         Center(
                           child: Text(
@@ -62,22 +62,27 @@ class DashboardHeader extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: ScreenUtil().setWidth(15),
                         ),
                         Center(
                           child: Text(
                             'Pelaksana Pemeriksa',
                             style: TextStyle(
-                              color: Colors.white70,
-                            ),
+                                color: Colors.white70,
+                                fontSize: ScreenUtil().setSp(25)),
                           ),
                         ),
-                        // Text(
-                        //   'Kantor Wilayah Maluku',
-                        //   style: TextStyle(
-                        //     color: Colors.white70,
-                        //   ),
-                        // ),
+                        SizedBox(
+                          height: ScreenUtil().setWidth(5),
+                        ),
+                        Center(
+                          child: Text(
+                            'Kantor Wilayah Maluku',
+                            style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: ScreenUtil().setSp(25)),
+                          ),
+                        ),
                       ]),
                 ),
               ),
@@ -85,7 +90,7 @@ class DashboardHeader extends StatelessWidget {
           ],
         ),
         Positioned(
-          bottom: ScreenUtil().setHeight(-100),
+          bottom: ScreenUtil().setWidth(-100),
           child: AppsDashboard(),
         )
       ],
