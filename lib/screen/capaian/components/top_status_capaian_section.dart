@@ -1,7 +1,20 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopStatusCapaianSection extends StatelessWidget {
+  Widget _textSelectButton(BuildContext context, Function onClick, String text,
+      int fontSize, Color color) {
+    return RichText(
+        text: TextSpan(
+            text: text,
+            style: TextStyle(
+                fontSize: ScreenUtil().setSp(fontSize),
+                fontWeight: FontWeight.bold,
+                color: color),
+            recognizer: TapGestureRecognizer()..onTap = onClick));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,20 +34,12 @@ class TopStatusCapaianSection extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
-                    "NKO",
-                    style: TextStyle(
-                        fontSize: ScreenUtil().setSp(50),
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF4D88E1)),
-                  ),
-                  Text(
-                    "120",
-                    style: TextStyle(
-                        fontSize: ScreenUtil().setSp(50),
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF05BE0C)),
-                  )
+                  _textSelectButton(context, () {
+                    return Navigator.pop(context);
+                  }, "NKO", 50, Color(0xFF4D88E1)),
+                  _textSelectButton(context, () {
+                    return Navigator.pop(context);
+                  }, "120", 50, Color(0xFF05BE0C)),
                 ],
               ),
             ),
@@ -61,18 +66,15 @@ class TopStatusCapaianSection extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                            top: ScreenUtil().setWidth(20),
-                          ),
-                          child: Text(
-                            "9",
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(50),
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF05BE0C),
+                            padding: EdgeInsets.only(
+                              top: ScreenUtil().setWidth(20),
                             ),
-                          ),
-                        ),
+                            child: _textSelectButton(
+                                context,
+                                () => Navigator.pop(context),
+                                "9",
+                                50,
+                                Color(0xFF05BE0C))),
                       ],
                     ),
                     VerticalDivider(
@@ -96,14 +98,12 @@ class TopStatusCapaianSection extends StatelessWidget {
                           padding: EdgeInsets.only(
                             top: ScreenUtil().setWidth(20),
                           ),
-                          child: Text(
-                            "4",
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(50),
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFFAFF00),
-                            ),
-                          ),
+                          child: _textSelectButton(
+                              context,
+                              () => Navigator.pop(context),
+                              "4",
+                              50,
+                              Color(0xFFFAFF00)),
                         ),
                       ],
                     ),
@@ -125,18 +125,15 @@ class TopStatusCapaianSection extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                            top: ScreenUtil().setWidth(20),
-                          ),
-                          child: Text(
-                            "2",
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(50),
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFFD6969),
+                            padding: EdgeInsets.only(
+                              top: ScreenUtil().setWidth(20),
                             ),
-                          ),
-                        ),
+                            child: _textSelectButton(
+                                context,
+                                () => Navigator.pop(context),
+                                "2",
+                                50,
+                                Color(0xFFFD6969))),
                       ],
                     ),
                     VerticalDivider(
@@ -157,18 +154,15 @@ class TopStatusCapaianSection extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                            top: ScreenUtil().setWidth(20),
-                          ),
-                          child: Text(
-                            "2",
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(50),
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFA4A4A4),
+                            padding: EdgeInsets.only(
+                              top: ScreenUtil().setWidth(20),
                             ),
-                          ),
-                        ),
+                            child: _textSelectButton(
+                                context,
+                                () => Navigator.pop(context),
+                                "2",
+                                50,
+                                Color(0xFFA4A4A4))),
                       ],
                     ),
                   ],

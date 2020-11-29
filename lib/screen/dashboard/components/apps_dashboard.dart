@@ -101,7 +101,7 @@ class AppsDashboard extends StatelessWidget {
                 height: ScreenUtil().setHeight(80),
                 color: Colors.amber,
               ),
-              Text('Hukum')
+              Text('P2')
             ]),
           ],
         ),

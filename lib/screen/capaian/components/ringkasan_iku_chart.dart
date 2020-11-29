@@ -21,6 +21,7 @@ class RingkasanIkuChart extends StatelessWidget {
         onPointTapped: (PointTapArgs args) {
           // print(args.seriesIndex);
           print(args.pointIndex);
+          Navigator.of(context).pushNamed('/capaian/ringkasaniku');
         },
         annotations: <CircularChartAnnotation>[
           CircularChartAnnotation(

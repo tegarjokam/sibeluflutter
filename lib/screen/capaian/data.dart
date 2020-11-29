@@ -19,7 +19,7 @@ class SasaranStrategiDataChart {
 }
 
 class NKODataChart {
-  int tahun;
+  String tahun;
   int nko;
   NKODataChart(this.tahun, this.nko);
 }

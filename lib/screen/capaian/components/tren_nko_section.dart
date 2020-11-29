@@ -5,11 +5,17 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 class TrenNKOSection extends StatelessWidget {
   final List<NKODataChart> nkoData = [
-    NKODataChart(2016, 90),
-    NKODataChart(2017, 95),
-    NKODataChart(2018, 105),
-    NKODataChart(2019, 110),
-    NKODataChart(2020, 100),
+    NKODataChart("Januari", 90),
+    NKODataChart("Februari", 95),
+    NKODataChart("Maret", 105),
+    NKODataChart("April", 110),
+    NKODataChart("Mei", 100),
+    NKODataChart("Juni", 90),
+    NKODataChart("Juli", 95),
+    NKODataChart("Agustus", 105),
+    NKODataChart("September", 110),
+    NKODataChart("Oktober", 100),
+    NKODataChart("November", 100),
   ];
 
   @override
@@ -51,12 +57,18 @@ class TrenNKOSection extends StatelessWidget {
                 child: Container(
                     padding: EdgeInsets.symmetric(
                         horizontal: ScreenUtil().setWidth(30)),
-                    child: SfCartesianChart(series: <ChartSeries>[
-                      AreaSeries<NKODataChart, int>(
-                          dataSource: nkoData,
-                          xValueMapper: (NKODataChart data, _) => data.tahun,
-                          yValueMapper: (NKODataChart data, _) => data.nko)
-                    ]))),
+                    child: SfCartesianChart(
+                        primaryXAxis: CategoryAxis(
+                            labelRotation: -45,
+                            maximumLabels: 12,
+                            desiredIntervals: 10),
+                        series: <ChartSeries>[
+                          AreaSeries<NKODataChart, String>(
+                              dataSource: nkoData,
+                              xValueMapper: (NKODataChart data, _) =>
+                                  data.tahun,
+                              yValueMapper: (NKODataChart data, _) => data.nko)
+                        ]))),
           ),
         ],
       ),
