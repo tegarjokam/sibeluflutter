@@ -7,22 +7,201 @@ import 'package:sibeluapp/screen/capaian/data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class StatusCapaianSection extends StatelessWidget {
+  TargetIKU target1 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target2 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target3 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target4 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target5 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target6 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target7 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target8 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target9 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target10 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target11 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target12 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target13 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target14 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  TargetIKU target15 =
+      TargetIKU("BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+
+  RealisasiIKU realisasi1 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi2 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi3 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi4 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi5 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi6 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi7 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi8 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi9 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi10 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi11 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi12 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi13 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi14 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+  RealisasiIKU realisasi15 = RealisasiIKU(
+      "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112);
+
   final List<ChartData> chartData = [
     ChartData('Hijau', ((9 / 17) * 100).toInt(), Color(0xFF05BE0C),
-        "${((9 / 17) * 100).toInt()}%"),
+        "${((9 / 17) * 100).toInt()}%", [
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "2a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "3a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "4a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "5a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+
+      // "Persentase efektivitas peningkatan nilai ekspor",
+
+      // "Tingkat efektivitas pengawasan dan penegakan hukum kepabeanan dan cukai",
+      // "Indeks kepuasan pengguna jasa",
+      // "Persentase piutang bea dan cukai yang diselesaikan",
+      // "Persentase kualitas perencanaan satuan kerja",
+      // "Indeks penyelesaian kajian di bidang kepabeanan dan cukai",
+      // "Indeks efektivitas komunikasi dan edukasi",
+      // "Persentase efektivitas kegiatan patroli dan operasi kepabeanan dan cukai",
+      // "Persentase efektivitas patroli laut",
+      // "Persentase efektivitas kegiatan patroli dan operasi kepabeanan dan cukai",
+      // "Persentase efektivitas patroli laut",
+      // "Persentase efektivitas kegiatan patroli dan operasi kepabeanan dan cukai",
+      // "Persentase efektivitas patroli laut"
+    ]),
     ChartData('Kuning', ((4 / 17) * 100).toInt(), Color(0xFFFAFF00),
-        "${((4 / 17) * 100).toInt()}%"),
-    ChartData('Merang', ((2 / 17) * 100).toInt(), Color(0xFFFC7656),
-        "${((2 / 17) * 100).toInt()}%"),
+        "${((4 / 17) * 100).toInt()}%", [
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+    ]),
+    ChartData('Merah', ((2 / 17) * 100).toInt(), Color(0xFFFC7656),
+        "${((2 / 17) * 100).toInt()}%", [
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+    ]),
     ChartData('Abu-abu', ((2 / 17) * 100).toInt(), Color(0xFFA4A4A4),
-        "${((2 / 17) * 100).toInt()}%")
+        "${((2 / 17) * 100).toInt()}%", [
+      Iku(
+          kode: "1a",
+          nama: "Persentase realiasi penerimaan kepabeanan dan cukai",
+          target: TargetIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112),
+          realisasi: RealisasiIKU(
+              "BULANAN", 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 111, 112)),
+    ])
   ];
 
   final List<PerspektifDataChart> perspektifData = [
     PerspektifDataChart("Stakeholder", 120, "3 IKU", Colors.teal),
     PerspektifDataChart("Customer", 100, "2 IKU", Colors.teal),
-    PerspektifDataChart("Internal Process", 80, "6 IKU", Colors.yellow),
-    PerspektifDataChart("Learning ..", 100, "6 IKU", Colors.teal)
+    PerspektifDataChart("Internal Process", 80, "7 IKU", Colors.yellow),
+    PerspektifDataChart("Learning ..", 100, "3 IKU", Colors.teal)
   ];
 
   final List<SasaranStrategiDataChart> sasaranData = [

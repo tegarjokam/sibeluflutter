@@ -37,7 +37,7 @@ class LandingAduanPage extends StatelessWidget {
               height: 30,
             ),
             Text(
-              'Portal untuk menyampaikan pengaduan pelanggaran melalui Aplikasi SIPUMA atau WISE',
+              'Portal untuk menyampaikan pengaduan baik berupa pelanggaran operasional maupun non operasional melalui Aplikasi SIPUMA atau WISE',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, wordSpacing: 2),
             ),

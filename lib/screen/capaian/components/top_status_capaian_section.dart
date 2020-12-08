@@ -72,7 +72,7 @@ class TopStatusCapaianSection extends StatelessWidget {
                             child: _textSelectButton(
                                 context,
                                 () => Navigator.pop(context),
-                                "9",
+                                "10",
                                 50,
                                 Color(0xFF05BE0C))),
                       ],
@@ -101,7 +101,7 @@ class TopStatusCapaianSection extends StatelessWidget {
                           child: _textSelectButton(
                               context,
                               () => Navigator.pop(context),
-                              "4",
+                              "2",
                               50,
                               Color(0xFFFAFF00)),
                         ),
@@ -160,7 +160,7 @@ class TopStatusCapaianSection extends StatelessWidget {
                             child: _textSelectButton(
                                 context,
                                 () => Navigator.pop(context),
-                                "2",
+                                "1",
                                 50,
                                 Color(0xFFA4A4A4))),
                       ],

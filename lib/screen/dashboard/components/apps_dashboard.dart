@@ -74,10 +74,10 @@ class AppsDashboard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      width: ScreenUtil().setHeight(80),
+                    Image.asset(
+                      'assets/img/growth.png',
                       height: ScreenUtil().setHeight(80),
-                      color: Colors.green,
+                      width: ScreenUtil().setHeight(80),
                     ),
                     Text(
                       'Capaian',

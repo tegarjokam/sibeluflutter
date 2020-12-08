@@ -6,6 +6,7 @@ import 'package:sibeluapp/screen/aduan/detail_aduan_admin.dart';
 import 'package:sibeluapp/screen/aduan/landing_aduan_page2.dart';
 import 'package:sibeluapp/screen/aduan/tindak_lanjut_aduan.dart';
 import 'package:sibeluapp/screen/capaian/capaian.dart';
+import 'package:sibeluapp/screen/capaian/components/detil_ringkasan_iku_chart.dart';
 import 'package:sibeluapp/screen/dashboard/dashboard.dart';
 import 'package:sibeluapp/screen/landing_dashboard_page.dart';
 import 'package:sibeluapp/screen/landing_page.dart';
@@ -52,7 +53,8 @@ class MyApp extends StatelessWidget {
         '/dashboard': (ctx) => DashboardScreen(),
         '/aduan/landing': (ctx) => LandingAduanPage(),
         '/aduan/webview': (ctx) => AduanWebview(),
-        '/capaian': (ctx) => Capaian()
+        '/capaian': (ctx) => Capaian(),
+        '/capaian/ringkasaniku': (ctx) => DetilRingkasanIKUChart(),
         // '/aduan-page': (ctx) => AduanPage(),
         // '/detail-item-aduan-admin': (ctx) => DetailAduanAdminPage(),
         // '/tindaklanjut-aduan': (ctx) => TindakLanjutAduan(),

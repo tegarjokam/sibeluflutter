@@ -51,6 +51,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
+  # Datepicker
+  syncfusion_flutter_datepicker: ^18.3.53-beta
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -81,6 +84,7 @@ flutter:
     - assets/img/Upacara_Pelantikan.jpg
     - assets/img/logo_aduan.png
     - assets/img/logo_list_aduan.jpg
+    - assets/img/growth.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
